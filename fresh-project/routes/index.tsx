@@ -1,19 +1,17 @@
-import { computed, useSignal } from "@preact/signals";
+import { computed, effect, useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
-import { getPokemonService } from "../services/GetPokemonService.ts";
+import PokemonCard from "../islands/PokemonCard.tsx";
+import PokemonSearchBar from "../islands/PokemonSearchBar.tsx";
 
 export default function Home() {
   const count = useSignal(0);
-  // const pokemon = computed(() => getPokemonService({ pokemonName: "pikachu" }));
-  // const pokemon = getPokemonService({ pokemonName: "pikachu" });
-  const pokemon = useSignal(getPokemonService({ pokemonName: "pikachu" }));
 
   return (
     <>
       <div class="px-4 py-8 mx-auto bg-[#86efac]">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-          <h1>{pokemon.value}</h1>
-          <h2>Input</h2>
+          <PokemonCard />
+          <PokemonSearchBar />
           <img
             class="my-6"
             src="/logo.svg"

@@ -1,24 +1,33 @@
-import { signal } from "@preact/signals";
+import { computed, effect, signal } from "@preact/signals";
+import { Pokemon } from "../models/PokemonModel.ts";
+import { pokemonToLookup } from "../islands/PokemonSearchBar.tsx";
 
-interface GetPokemonServiceProps {
-  pokemonName: string;
-}
+const url = "https://pokeapi.co/api/v2/pokemon";
 
-export function getPokemonService({ pokemonName }: GetPokemonServiceProps) {
-  const url = "https://pokeapi.co/api/v2/pokemon";
-  const pokemon = signal({});
+let url_with_name = computed(
+  () => `${url}/${pokemonToLookup.value.toLocaleLowerCase()}`,
+);
 
-  async function fetchData() {
-    console.log(`fetching Pokemon ${pokemonName}`);
-    const response = await fetch(`${url}/${pokemonName}`);
-    const results = await response.json();
+export const pokemon = signal<Pokemon>(await fetchData({ init: true }));
 
+effect(() => {
+  console.log(`url_with_name: ${url_with_name.value}`);
+  url_with_name = computed(
+    () => `${url}/${pokemonToLookup.value.toLocaleLowerCase()}`,
+  );
+  fetchData({ init: false });
+});
+
+async function fetchData({ init }: { init: boolean }) {
+  console.log(`fetching Pokemon `);
+  const response = await fetch(`${url_with_name}`);
+  const results = await response.json();
+
+  console.log(`done fetching Pokemon`);
+
+  if (!init) {
     pokemon.value = results;
-    console.log(`done fetching Pokemon ${pokemonName}`);
-    console.log(JSON.stringify(pokemon.value));
   }
 
-  fetchData();
-
-  return pokemon;
+  return results;
 }

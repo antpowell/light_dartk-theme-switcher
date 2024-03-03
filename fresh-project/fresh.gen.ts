@@ -8,6 +8,9 @@ import * as $api_joke from "./routes/api/joke.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $PokemonCard from "./islands/PokemonCard.tsx";
+import * as $PokemonSearchBar from "./islands/PokemonSearchBar.tsx";
+import * as $usePokemonService from "./islands/usePokemonService.ts";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -20,6 +23,9 @@ const manifest = {
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/PokemonCard.tsx": $PokemonCard,
+    "./islands/PokemonSearchBar.tsx": $PokemonSearchBar,
+    "./islands/usePokemonService.ts": $usePokemonService,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
