@@ -6,11 +6,14 @@ export const usePokemonService = ({ pokemonName }: { pokemonName: string }) => {
   const error = useSignal<Error | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const url = "https://pokeapi.co/api/v2/pokemon";
 
     async function callPokemonApi() {
       try {
-        const response = await fetch(`${url}/${pokemonName}`);
+        const response = await fetch(`${url}/${pokemonName}`, { signal });
         const results = await response.json();
 
         pokemon.value = results;
@@ -23,6 +26,7 @@ export const usePokemonService = ({ pokemonName }: { pokemonName: string }) => {
     callPokemonApi();
 
     return () => {
+      controller.abort();
     };
   }, []);
 
