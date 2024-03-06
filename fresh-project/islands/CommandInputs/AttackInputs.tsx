@@ -1,11 +1,6 @@
-import { useSignal } from "@preact/signals";
+import { ActionCommandInputs } from "../../models/MovementsModels.ts";
 
-type Input = "1" | "2" | "3" | "4";
-interface Inputs {
-  inputs: Set<Input>;
-}
-
-export default function AttackInputs({ inputs }: Inputs) {
+export default function AttackInputs({ inputs }: ActionCommandInputs) {
   return (
     <>
       <div className="grid grid-rows-2 grid-flow-col gap-0 rotate-[60deg]">

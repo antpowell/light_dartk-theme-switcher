@@ -1,5 +1,5 @@
 import { useSignal } from "@preact/signals";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 
 export const usePokemonService = ({ pokemonName }: { pokemonName: string }) => {
   const pokemon = useSignal<string | null>(null);
