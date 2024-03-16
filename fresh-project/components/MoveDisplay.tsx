@@ -1,7 +1,7 @@
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { signal, useSignal } from "@preact/signals";
 import AttackInputs from "../islands/CommandInputs/AttackInputs.tsx";
-import { ActionCommand } from "../models/MovementsModels.ts";
+import { ActionCommand, DirectionalInputs } from "../models/MovementsModels.ts";
 import {
   DirectionalCommand,
   DirectionalInput,
@@ -11,12 +11,13 @@ import MovementInputs from "./MovementInputs.tsx";
 export default function MoveDisplay() {
   // if (!IS_BROWSER) return null;
 
-  const combo1 = useSignal(
-    [{
-      command: DirectionalCommand.DB,
-      hold: false,
-    }],
-  );
+  const combo1 = useSignal<DirectionalInputs>({
+    inputs: {
+      DB: {
+        hold: false,
+      },
+    },
+  });
 
   console.log(`combo1: ${JSON.stringify(combo1)}`);
   console.log(`combo1 type: ${typeof combo1.value}`);
@@ -36,7 +37,7 @@ export default function MoveDisplay() {
       {/* <MovementInputs inputs={new Set<Input>(["D", "F", "B", "U"])} /> */}
       {/* <MovementInputs inputs={new Set(["DB", "FD", "UB", "UF"])} /> */}
       <MovementInputs
-        inputs={combo1.value}
+        inputs={combo1.value.inputs}
       />
     </div>
   );

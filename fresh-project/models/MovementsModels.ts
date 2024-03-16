@@ -17,13 +17,22 @@ export interface DirectionalCommandVariants {
   hold: boolean;
 }
 
-export interface DirectionalInput extends DirectionalCommandVariants {
-  command: DirectionalCommand;
-}
+export type DirectionalInput = Partial<
+  Record<
+    DirectionalCommand,
+    DirectionalCommandVariants
+  >
+>;
 
-export interface DirectionalInputs {
-  inputs: Set<DirectionalInput>;
-}
+/* The `DirectionalInputs` interface is defining a type that represents a collection of directional inputs. It has a
+property named `inputs` which is a record where the keys are `DirectionalCommand` enum values and the values are objects
+of type `DirectionalCommandVariants`. This structure allows you to map each `DirectionalCommand` to its corresponding
+`DirectionalCommandVariants` object, providing a way to store and access information about different directional
+commands in a structured manner. */
+export type DirectionalInputs = Record<
+  "inputs",
+  DirectionalInput
+>;
 
 export enum ActionCommand {
   One = "1",

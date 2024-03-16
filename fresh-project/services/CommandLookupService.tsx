@@ -1,6 +1,7 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 import {
   DirectionalCommand,
+  DirectionalCommandVariants,
   DirectionalInputs,
 } from "../models/MovementsModels.ts";
 import {
@@ -16,25 +17,25 @@ import {
 import { DirectionalInput } from "../models/MovementsModels.ts";
 
 function getComponent(
-  { command, hold }: DirectionalInput,
+  [command, variants]: [string, DirectionalCommandVariants],
 ): JSX.Element {
   switch (command) {
     case DirectionalCommand.D:
-      return <D hold={hold} />;
+      return <D hold={variants.hold} />;
     case "F":
-      return <F hold={hold} />;
+      return <F hold={variants.hold} />;
     case "B":
-      return <B hold={hold} />;
+      return <B hold={variants.hold} />;
     case "U":
-      return <Up hold={hold} />;
+      return <Up hold={variants.hold} />;
     case "DB":
-      return <DB hold={hold} />;
+      return <DB hold={variants.hold} />;
     case "DF":
-      return <DF hold={hold} />;
+      return <DF hold={variants.hold} />;
     case "UB":
-      return <UB hold={hold} />;
+      return <UB hold={variants.hold} />;
     case "UF":
-      return <UF hold={hold} />;
+      return <UF hold={variants.hold} />;
   }
   return <></>;
 }
@@ -43,9 +44,9 @@ export function CommandLookUpService(
   { inputs }: DirectionalInputs,
 ): JSX.Element {
   const commandList: JSX.Element[] = [];
-  inputs.forEach((input) => {
-    commandList.push(getComponent(input));
-  });
+  Object.entries(inputs).forEach((input) =>
+    commandList.push(getComponent(input))
+  );
 
   return <>{commandList}</>;
 }
