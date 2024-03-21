@@ -6,21 +6,22 @@ import {
   DirectionalCommand,
   DirectionalInput,
 } from "../models/MovementsModels.ts";
-import MovementInputs from "./MovementInputs.tsx";
+import MovementInputs from "../islands/CommandInputs/MovementInputs.tsx";
+import { B, F } from "../islands/MovementInputs/index.ts";
 
 export default function MoveDisplay() {
-  // if (!IS_BROWSER) return null;
-
   const combo1 = useSignal<DirectionalInputs>({
-    inputs: {
-      DB: {
+    inputs: [
+      {
+        command: DirectionalCommand.F,
         hold: false,
       },
-    },
+      {
+        command: DirectionalCommand.B,
+        hold: false,
+      },
+    ],
   });
-
-  console.log(`combo1: ${JSON.stringify(combo1)}`);
-  console.log(`combo1 type: ${typeof combo1.value}`);
 
   return (
     <div class={"flex gap-4 flex-row"}>
@@ -36,9 +37,28 @@ export default function MoveDisplay() {
       <AttackInputs inputs={new Set([ActionCommand.Two])} />
       {/* <MovementInputs inputs={new Set<Input>(["D", "F", "B", "U"])} /> */}
       {/* <MovementInputs inputs={new Set(["DB", "FD", "UB", "UF"])} /> */}
-      <MovementInputs
+      {
+        /* <MovementInputs
         inputs={combo1.value.inputs}
-      />
+      /> */
+      }
+      <F key={0} hold={false} />
+      <B key={1} hold={false} />
+      {
+        /* <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="3"
+        class={`w-12 h-12 stroke-${!true ? "white" : "black"}`}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+        />
+      </svg> */
+      }
     </div>
   );
 }

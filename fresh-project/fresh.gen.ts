@@ -8,16 +8,17 @@ import * as $api_joke from "./routes/api/joke.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $CommandInputs_AttackInputs from "./islands/CommandInputs/AttackInputs.tsx";
-import * as $CommandInputs_MovementInputs_B from "./islands/CommandInputs/MovementInputs/B.tsx";
-import * as $CommandInputs_MovementInputs_D from "./islands/CommandInputs/MovementInputs/D.tsx";
-import * as $CommandInputs_MovementInputs_DB from "./islands/CommandInputs/MovementInputs/DB.tsx";
-import * as $CommandInputs_MovementInputs_DF from "./islands/CommandInputs/MovementInputs/DF.tsx";
-import * as $CommandInputs_MovementInputs_F from "./islands/CommandInputs/MovementInputs/F.tsx";
-import * as $CommandInputs_MovementInputs_UB from "./islands/CommandInputs/MovementInputs/UB.tsx";
-import * as $CommandInputs_MovementInputs_UF from "./islands/CommandInputs/MovementInputs/UF.tsx";
-import * as $CommandInputs_MovementInputs_Up from "./islands/CommandInputs/MovementInputs/Up.tsx";
-import * as $CommandInputs_MovementInputs_index from "./islands/CommandInputs/MovementInputs/index.ts";
+import * as $CommandInputs_MovementInputs from "./islands/CommandInputs/MovementInputs.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $MovementInputs_B from "./islands/MovementInputs/B.tsx";
+import * as $MovementInputs_D from "./islands/MovementInputs/D.tsx";
+import * as $MovementInputs_DB from "./islands/MovementInputs/DB.tsx";
+import * as $MovementInputs_DF from "./islands/MovementInputs/DF.tsx";
+import * as $MovementInputs_F from "./islands/MovementInputs/F.tsx";
+import * as $MovementInputs_UB from "./islands/MovementInputs/UB.tsx";
+import * as $MovementInputs_UF from "./islands/MovementInputs/UF.tsx";
+import * as $MovementInputs_Up from "./islands/MovementInputs/Up.tsx";
+import * as $MovementInputs_index from "./islands/MovementInputs/index.ts";
 import * as $PokemonCard from "./islands/PokemonCard.tsx";
 import * as $PokemonSearchBar from "./islands/PokemonSearchBar.tsx";
 import * as $usePokemonService from "./islands/usePokemonService.ts";
@@ -33,25 +34,17 @@ const manifest = {
   },
   islands: {
     "./islands/CommandInputs/AttackInputs.tsx": $CommandInputs_AttackInputs,
-    "./islands/CommandInputs/MovementInputs/B.tsx":
-      $CommandInputs_MovementInputs_B,
-    "./islands/CommandInputs/MovementInputs/D.tsx":
-      $CommandInputs_MovementInputs_D,
-    "./islands/CommandInputs/MovementInputs/DB.tsx":
-      $CommandInputs_MovementInputs_DB,
-    "./islands/CommandInputs/MovementInputs/DF.tsx":
-      $CommandInputs_MovementInputs_DF,
-    "./islands/CommandInputs/MovementInputs/F.tsx":
-      $CommandInputs_MovementInputs_F,
-    "./islands/CommandInputs/MovementInputs/UB.tsx":
-      $CommandInputs_MovementInputs_UB,
-    "./islands/CommandInputs/MovementInputs/UF.tsx":
-      $CommandInputs_MovementInputs_UF,
-    "./islands/CommandInputs/MovementInputs/Up.tsx":
-      $CommandInputs_MovementInputs_Up,
-    "./islands/CommandInputs/MovementInputs/index.ts":
-      $CommandInputs_MovementInputs_index,
+    "./islands/CommandInputs/MovementInputs.tsx": $CommandInputs_MovementInputs,
     "./islands/Counter.tsx": $Counter,
+    "./islands/MovementInputs/B.tsx": $MovementInputs_B,
+    "./islands/MovementInputs/D.tsx": $MovementInputs_D,
+    "./islands/MovementInputs/DB.tsx": $MovementInputs_DB,
+    "./islands/MovementInputs/DF.tsx": $MovementInputs_DF,
+    "./islands/MovementInputs/F.tsx": $MovementInputs_F,
+    "./islands/MovementInputs/UB.tsx": $MovementInputs_UB,
+    "./islands/MovementInputs/UF.tsx": $MovementInputs_UF,
+    "./islands/MovementInputs/Up.tsx": $MovementInputs_Up,
+    "./islands/MovementInputs/index.ts": $MovementInputs_index,
     "./islands/PokemonCard.tsx": $PokemonCard,
     "./islands/PokemonSearchBar.tsx": $PokemonSearchBar,
     "./islands/usePokemonService.ts": $usePokemonService,

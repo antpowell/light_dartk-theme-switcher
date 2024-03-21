@@ -1,6 +1,6 @@
-import { DirectionalCommandVariants } from "../../../models/MovementsModels.ts";
+import { DirectionalCommandVariants } from "../../models/MovementsModels.ts";
 
-export function F({ hold }: DirectionalCommandVariants) {
+export function DB({ hold }: DirectionalCommandVariants) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +12,7 @@ export function F({ hold }: DirectionalCommandVariants) {
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+        d="m19.5 4.5-15 15m0 0h11.25m-11.25 0V8.25"
       />
     </svg>
   );

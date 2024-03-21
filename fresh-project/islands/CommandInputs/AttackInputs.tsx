@@ -2,8 +2,6 @@ import { ActionCommand } from "../../models/MovementsModels.ts";
 import { ActionCommandInputs } from "../../models/MovementsModels.ts";
 
 export default function AttackInputs({ inputs }: ActionCommandInputs) {
-  console.log(`AttackInputs: ${JSON.stringify(inputs)}`);
-  console.log(`inputs type: ${typeof inputs}`);
   return (
     <>
       <div className="grid grid-rows-2 grid-flow-col gap-0 rotate-[60deg]">
