@@ -1,4 +1,4 @@
-import { DirectionalCommandVariants } from "../../models/MovementsModels.ts";
+import { DirectionalCommandVariants } from "../../../models/MovementsModels.ts";
 
 export function B({ hold }: DirectionalCommandVariants) {
   return (
@@ -7,7 +7,7 @@ export function B({ hold }: DirectionalCommandVariants) {
       fill="none"
       viewBox="0 0 24 24"
       stroke-width="3"
-      class={`stroke-${!hold ? "white" : "black"}`}
+      class={`w-12 h-12 ${!hold ? "stroke-white" : "stroke-black"}`}
     >
       <path
         stroke-linecap="round"
@@ -17,5 +17,3 @@ export function B({ hold }: DirectionalCommandVariants) {
     </svg>
   );
 }
-
-const styleSheet = {};

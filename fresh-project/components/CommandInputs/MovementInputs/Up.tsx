@@ -1,4 +1,4 @@
-import { DirectionalCommandVariants } from "../../models/MovementsModels.ts";
+import { DirectionalCommandVariants } from "../../../models/MovementsModels.ts";
 
 export function Up({ hold }: DirectionalCommandVariants) {
   return (
@@ -7,7 +7,7 @@ export function Up({ hold }: DirectionalCommandVariants) {
       fill="none"
       viewBox="0 0 24 24"
       stroke-width="3"
-      class={` ${!hold ? "stroke-white" : "stroke-black"}`}
+      class={`w-12 h-12 stroke-${!hold ? "white" : "black"}`}
     >
       <path
         stroke-linecap="round"

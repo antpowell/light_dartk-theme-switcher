@@ -11,6 +11,7 @@ export enum DirectionalCommand {
   DF = "DF",
   UB = "UB",
   UF = "UF",
+  N = "N",
 }
 
 export interface DirectionalCommandVariants {

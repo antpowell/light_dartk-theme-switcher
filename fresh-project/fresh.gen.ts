@@ -15,6 +15,7 @@ import * as $MovementInputs_D from "./islands/MovementInputs/D.tsx";
 import * as $MovementInputs_DB from "./islands/MovementInputs/DB.tsx";
 import * as $MovementInputs_DF from "./islands/MovementInputs/DF.tsx";
 import * as $MovementInputs_F from "./islands/MovementInputs/F.tsx";
+import * as $MovementInputs_N from "./islands/MovementInputs/N.tsx";
 import * as $MovementInputs_UB from "./islands/MovementInputs/UB.tsx";
 import * as $MovementInputs_UF from "./islands/MovementInputs/UF.tsx";
 import * as $MovementInputs_Up from "./islands/MovementInputs/Up.tsx";
@@ -41,6 +42,7 @@ const manifest = {
     "./islands/MovementInputs/DB.tsx": $MovementInputs_DB,
     "./islands/MovementInputs/DF.tsx": $MovementInputs_DF,
     "./islands/MovementInputs/F.tsx": $MovementInputs_F,
+    "./islands/MovementInputs/N.tsx": $MovementInputs_N,
     "./islands/MovementInputs/UB.tsx": $MovementInputs_UB,
     "./islands/MovementInputs/UF.tsx": $MovementInputs_UF,
     "./islands/MovementInputs/Up.tsx": $MovementInputs_Up,

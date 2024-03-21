@@ -5,7 +5,7 @@ import { CommandLookUpService } from "../../services/MovementCommandLookUpServic
 export default function MovementInputs({ inputs }: DirectionalInputs) {
   return (
     <>
-      <div className="grid grid-flow-col gap-0">
+      <div className="flex flex-row gap-0 w-52 h-fit">
         {CommandLookUpService({ inputs })}
       </div>
     </>

@@ -10,6 +10,7 @@ import {
   DB,
   DF,
   F,
+  N,
   UB,
   UF,
   Up,
@@ -41,6 +42,8 @@ function getComponent(
       return <UB key={key} hold={hold} />;
     case "UF":
       return <UF key={key} hold={hold} />;
+    case "N":
+      return <N key={key} hold={hold} />;
   }
   return <></>;
 }
