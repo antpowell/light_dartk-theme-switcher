@@ -1,6 +1,16 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 
+export const InputLanguage = {
+  PLUS: {
+    id: "+",
+  },
+  WHILE_RUNNING: {
+    id: "WR",
+  },
+} as const;
+
 export type Command = DirectionalCommand & ActionCommand;
+// export interface Command extends DirectionalCommand;
 
 export enum DirectionalCommand {
   D = "D",

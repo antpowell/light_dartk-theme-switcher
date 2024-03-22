@@ -5,5 +5,9 @@ import { InputIsland } from "../islands/InputIsland.tsx";
 export const comboInputState = signal("");
 
 export const ComboInput = () => {
-  return <InputIsland label="Combo" name="combo" />;
+  return (
+    <div className="flex flex-col justify-center items-center p-8 ">
+      <InputIsland label="Combo" name="combo" />
+    </div>
+  );
 };

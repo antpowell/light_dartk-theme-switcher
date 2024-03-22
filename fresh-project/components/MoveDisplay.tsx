@@ -51,3 +51,5 @@ export default function MoveDisplay() {
 
 `F1+2 DF3D2 212 F121 ✅`;
 `F3FF21 UF3WR1 -> 212 ✅`;
+
+`Heat FF421 DF23 DF21 DF1 FF421 1 F32UF4`;
