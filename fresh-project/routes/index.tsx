@@ -2,8 +2,8 @@ import { computed, effect, useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
 import PokemonCard from "../islands/PokemonCard.tsx";
 import PokemonSearchBar from "../islands/PokemonSearchBar.tsx";
-import AttackInputs from "../islands/CommandInputs/AttackInputs.tsx";
 import MoveDisplay from "../components/MoveDisplay.tsx";
+import { ComboInput } from "../components/ComboInput.tsx";
 
 export default function Home() {
   const count = useSignal(0);
@@ -28,6 +28,7 @@ export default function Home() {
           </p>
           <Counter count={count} />
           <MoveDisplay />
+          <ComboInput />
         </div>
       </div>
     </>
