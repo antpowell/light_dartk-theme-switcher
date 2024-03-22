@@ -48,3 +48,6 @@ export default function MoveDisplay() {
     </div>
   );
 }
+
+`F1+2 DF3D2 212 F121 ✅`;
+`F3FF21 UF3WR1 -> 212 ✅`;
