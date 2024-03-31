@@ -1,30 +1,30 @@
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import { signal, useSignal } from "@preact/signals";
-import AttackInputs from "../islands/CommandInputs/AttackInputs.tsx";
-import { ActionCommand, DirectionalInputs } from "../models/MovementsModels.ts";
+import { useSignal } from "@preact/signals";
+import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
+import MovementInputs from "../islands/CommandInputs/MovementInputs.tsx";
 import {
   DirectionalCommand,
-  DirectionalInput,
+  DirectionalInputs,
 } from "../models/MovementsModels.ts";
-import MovementInputs from "../islands/CommandInputs/MovementInputs.tsx";
+import { combo } from "../shared/combo.ts";
+import { AttackInputs } from "../islands/CommandInputs/AttackInputs.tsx";
 
-export default function MoveDisplay() {
+export default function MoveDisplay({ children }: { children?: JSX.Element }) {
   const combo1 = useSignal<DirectionalInputs>({
     inputs: [
       {
-        command: DirectionalCommand.F,
+        command: DirectionalCommand.FORWARD,
         hold: false,
       },
       {
-        command: DirectionalCommand.N,
+        command: DirectionalCommand.NEUTRAL,
         hold: false,
       },
       {
-        command: DirectionalCommand.B,
+        command: DirectionalCommand.BACK,
         hold: false,
       },
       {
-        command: DirectionalCommand.DB,
+        command: DirectionalCommand.DOWN_BACK,
         hold: false,
       },
     ],
@@ -32,19 +32,29 @@ export default function MoveDisplay() {
 
   return (
     <div class={"flex gap-4 flex-row align-center"}>
-      <MovementInputs
-        inputs={combo1.value.inputs}
-      />
-      <AttackInputs
-        inputs={new Set([
-          ActionCommand.One,
-          ActionCommand.Two,
-          ActionCommand.Three,
-        ])}
-      />
+      {children ? children : (
+        <>
+          <MovementInputs
+            inputs={combo1.value.inputs}
+          />
 
-      <AttackInputs inputs={new Set([ActionCommand.One])} />
-      <AttackInputs inputs={new Set([ActionCommand.Two])} />
+          {combo.value.size !== 0
+            ? <AttackInputs inputs={combo.value} />
+            : null}
+          {
+            /* <AttackInputs
+            inputs={new Set([
+              ActionCommand.LP,
+              ActionCommand.RP,
+              ActionCommand.LK,
+            ])}
+          />
+
+          <AttackInputs inputs={new Set([ActionCommand.LP])} />
+          <AttackInputs inputs={new Set([ActionCommand.RP])} /> */
+          }
+        </>
+      )}
     </div>
   );
 }

@@ -34,13 +34,13 @@ function getComponent(
       return <B key={key} hold={hold} />;
     case "U":
       return <Up key={key} hold={hold} />;
-    case "DB":
+    case "D/B":
       return <DB key={key} hold={hold} />;
-    case "DF":
+    case "D/F":
       return <DF key={key} hold={hold} />;
-    case "UB":
+    case "U/B":
       return <UB key={key} hold={hold} />;
-    case "UF":
+    case "U/F":
       return <UF key={key} hold={hold} />;
     case "N":
       return <N key={key} hold={hold} />;

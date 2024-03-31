@@ -49,12 +49,6 @@ function getPokemonTypeColors(types: Type[]): string {
     ["fairy", "bg-pink-400"],
   ]);
 
-  console.log(
-    `Tailwind class for ${types[0].type.name}: ${
-      colors.get(types[0].type.name)
-    }`,
-  );
-
   return colors.get(types[0].type.name) ?? "bg-transparent";
 }
 
@@ -63,9 +57,6 @@ effect(() => {
 });
 
 export default function PokemonCard() {
-  //   effect(() => {
-  //     console.log(`fetching Pokemon ${pokemon.value.name}`);
-  //   });
   return (
     <>
       <div class="group relative">

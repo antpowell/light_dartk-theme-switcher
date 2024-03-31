@@ -1,27 +1,18 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 
-export const InputLanguage = {
-  PLUS: {
-    id: "+",
-  },
-  WHILE_RUNNING: {
-    id: "WR",
-  },
-} as const;
-
 export type Command = DirectionalCommand & ActionCommand;
 // export interface Command extends DirectionalCommand;
 
 export enum DirectionalCommand {
-  D = "D",
-  F = "F",
-  B = "B",
-  U = "U",
-  DB = "DB",
-  DF = "DF",
-  UB = "UB",
-  UF = "UF",
-  N = "N",
+  DOWN = "D",
+  FORWARD = "F",
+  BACK = "B",
+  UP = "U",
+  DOWN_BACK = "D/B",
+  DOWN_FORWARD = "D/F",
+  UP_BACK = "U/B",
+  UP_FORWARD = "U/F",
+  NEUTRAL = "N",
 }
 
 export interface DirectionalCommandVariants {
@@ -46,10 +37,10 @@ export type DirectionalInputs = Record<
 >;
 
 export enum ActionCommand {
-  One = "1",
-  Two = "2",
-  Three = "3",
-  Four = "4",
+  LP = "1",
+  RP = "2",
+  LK = "3",
+  RK = "4",
 }
 
 export interface ActionCommandInputs {

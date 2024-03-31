@@ -1,12 +1,32 @@
-import { computed, effect, useSignal } from "@preact/signals";
+import {
+  computed,
+  effect,
+  useComputed,
+  useSignal,
+  useSignalEffect,
+} from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
 import PokemonCard from "../islands/PokemonCard.tsx";
 import PokemonSearchBar from "../islands/PokemonSearchBar.tsx";
 import MoveDisplay from "../components/MoveDisplay.tsx";
-import { ComboInput } from "../components/ComboInput.tsx";
+import { ComboInput, parsedCombo } from "../islands/ComboInput.tsx";
 
 export default function Home() {
   const count = useSignal(0);
+
+  const parsedComboComponentOrPlaceholder = useSignal(<>Testing...</>);
+
+  const parsedComboComponent = useComputed(() =>
+    parsedCombo.value ? parsedCombo.value : <div>Testing...</div>
+  );
+
+  useSignalEffect(() => {
+    console.log(`inside of Home useEffect`);
+    console.log(`inside of Home we get: ${parsedCombo.value}`);
+    if (parsedCombo.value) {
+      parsedComboComponentOrPlaceholder.value = parsedCombo.value;
+    }
+  });
 
   return (
     <>
@@ -29,6 +49,9 @@ export default function Home() {
           <Counter count={count} />
           <MoveDisplay />
           <ComboInput />
+          <MoveDisplay>
+            {parsedComboComponentOrPlaceholder.value}
+          </MoveDisplay>
         </div>
       </div>
     </>

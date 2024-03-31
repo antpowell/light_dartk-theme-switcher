@@ -19,13 +19,13 @@ export interface InputIslandProps {
   label: string;
   name?: string;
   type?: JSX.HTMLAttributes<HTMLInputElement>["type"];
-  //   onChange: (event: JSX.TargetedEvent<HTMLInputElement, Event>) => void;
-  //   onKeyUp: (event: JSX.TargetedEvent<HTMLInputElement, Event>) => void;
+  onChange: (event: JSX.TargetedEvent<HTMLInputElement, Event>) => void;
+  onKeyUp: (event: JSX.TargetedKeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 
 export const InputIsland = (
-  { label, name, placeholder }: InputIslandProps,
+  { label, name, placeholder, onChange, onKeyUp }: InputIslandProps,
 ) => {
   return (
     <>
@@ -41,15 +41,9 @@ export const InputIsland = (
           name={name}
           id={name}
           class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          onChange={handleInputChange}
+          onChange={onChange}
           onKeyUp={(e) => {
-            if (e.key === "Enter") {
-              //   console.log(
-              //     `pokemonSearchInputValue: ${pokemonSearchInputValue.value}`,
-              //   );
-              //   pokemonToLookup.value = pokemonSearchInputValue.value
-              //     .toLocaleLowerCase();
-            }
+            onKeyUp(e);
           }}
           placeholder={placeholder}
         />
