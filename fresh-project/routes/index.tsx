@@ -8,7 +8,7 @@ import {
 import Counter from "../islands/Counter.tsx";
 import PokemonCard from "../islands/PokemonCard.tsx";
 import PokemonSearchBar from "../islands/PokemonSearchBar.tsx";
-import MoveDisplay from "../components/MoveDisplay.tsx";
+import MoveDisplay from "../islands/MoveDisplay.tsx";
 import { ComboInput, parsedCombo } from "../islands/ComboInput.tsx";
 
 export default function Home() {

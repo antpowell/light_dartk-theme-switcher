@@ -1,12 +1,12 @@
 import { useSignal } from "@preact/signals";
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
-import MovementInputs from "../islands/CommandInputs/MovementInputs.tsx";
+import MovementInputs from "./CommandInputs/MovementInputs.tsx";
 import {
   DirectionalCommand,
   DirectionalInputs,
 } from "../models/MovementsModels.ts";
 import { combo } from "../shared/combo.ts";
-import { AttackInputs } from "../islands/CommandInputs/AttackInputs.tsx";
+import { AttackInputs } from "./CommandInputs/AttackInputs.tsx";
 
 export default function MoveDisplay({ children }: { children?: JSX.Element }) {
   const combo1 = useSignal<DirectionalInputs>({
