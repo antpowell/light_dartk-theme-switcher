@@ -69,10 +69,6 @@ export const InputLanguage = {
     },
   },
 
-  PLUS: {
-    id: "+",
-    component: null,
-  },
   WHILE_RAISING: {
     id: "WR",
     component: null,
