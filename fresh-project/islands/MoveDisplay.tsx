@@ -34,15 +34,17 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
     <div class={"flex gap-4 flex-row align-center"}>
       {children ? children : (
         <>
-          <MovementInputs
+          {
+            /* <MovementInputs
             inputs={combo1.value.inputs}
-          />
+          /> */
+          }
 
           {combo.value.size !== 0
             ? <AttackInputs inputs={combo.value} />
             : null}
 
-          {comboDisplay.value}
+          {/* {comboDisplay.value} */}
         </>
       )}
 
@@ -51,19 +53,14 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
   );
 }
 
+// RegEx example link for compound attack inputs [fudb][1-4](\+[1-4]){0,3}
+// https://regex101.com/r/Xumiw8/1
 `F1+2 DF3D2 212 F121 ✅`;
 `F3FF21 UF3WR1 -> 212 ✅`;
-`f1+3, ff4, 3, 1, b3f, 2, 1+2`;
+
+//create a regEx that can match a combo of the form f[optional]2[required](+3+4+1)[optional]
+`f1+3,ff4,3,1,b3f,2,1+2,u/f2`;
 
 `Heat FF421 DF23 DF21 DF1 FF421 1 F32UF4`;
 
-//    <AttackInputs
-//   inputs={new Set([
-//     ActionCommand.LP,
-//     ActionCommand.RP,
-//     ActionCommand.LK,
-//   ])}
-// />
-
-// <AttackInputs inputs={new Set([ActionCommand.LP])} />
-// <AttackInputs inputs={new Set([ActionCommand.RP])} />
+`/+(?=[1-4])/g`;

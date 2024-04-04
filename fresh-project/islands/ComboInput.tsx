@@ -100,28 +100,6 @@ export const comboInputElements = signal<JSX.Element[]>([]);
 
 let commandMap: DirectionalInputs;
 
-// export const parsedCombo = computed(() => {
-//   const attacks = computed(() =>
-//     getCompoundAttackInputs(
-//       comboInputState.value,
-//     )
-//   );
-
-//   console.log(`attacks: ${JSON.stringify(attacks.value?.size, null, 2)}`);
-
-//   return (
-//     <>
-//       {attacks.value
-//         ? (
-//           <AttackInputs
-//             inputs={attacks.value}
-//           />
-//         )
-//         : null}
-//     </>
-//   );
-// });
-
 const stringToMovementMapper = (inputs: string) => {
   console.log("string to movement mapper...");
   const movements: DirectionalInputs = { inputs: [] };
@@ -287,6 +265,9 @@ export const ComboInput = () => {
     event: JSX.TargetedKeyboardEvent<HTMLInputElement>,
   ) => {
     if (event.key === "Enter") {
+      // if(validInput){
+
+      // }
       console.log(`enter pressed with value: ${event.currentTarget.value}`);
       comboInputState.value = event.currentTarget.value;
     }
