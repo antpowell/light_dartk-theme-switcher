@@ -6,12 +6,16 @@ export const combo = signal<Set<ActionCommand>>(new Set());
 
 export const comboDisplay = signal<JSX.Element[]>([]);
 
+// Test RegEx here: https://regex101.com/r/S4lICE/1
 export const compoundAttackRegex =
   /(?<=[fudb]?)(?<!\d)([1-4](\+[1-4]){1,3})(?!\d)$/gm;
-// /([fudb])?([1-4]{1})((?<=[1-4]{1})(?<![\d]{2,})\+(?=[1-4]{1})(?![\d]{2,}))([1-4])/g;
+
+// Test RegEx here: https://regex101.com/r/BFI4gl/1
 export const compoundMovementRegex = /(([fudb])(?<=[ud])\/(?=[fb])([fudb]))?/g;
+
 export const BasicMovementRegex =
-  /(?<!\/)(?<!\+)(?<!\w)[fudb]{1,3}(?!\/)(?![\w])/g;
+  /(?<!\/)(?<!\+)(?<!\d{1,})[fudb]{1,3}[H]?(?!\/)(?!\+)/g;
+
 export const BasicAttackRegex =
   /(?<!\/)(?<!\+)(?<!\w)[1-4](?!\/)(?!\+)(?![\w])/g;
 
