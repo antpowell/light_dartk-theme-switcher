@@ -4,7 +4,7 @@ import {
   DirectionalCommand,
   DirectionalInputs,
 } from "../models/MovementsModels.ts";
-import { combo, comboDisplay } from "../shared/combo.ts";
+import { comboList, moveList } from "../shared/combo.ts";
 import { AttackInputs } from "./CommandInputs/AttackInputs.tsx";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
 
@@ -35,20 +35,18 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
       {children ? children : (
         <>
           {
-            /* <MovementInputs
-            inputs={combo1.value.inputs}
-          /> */
+            /* {
+            <MovementInputs
+              inputs={moveList.value}
+            />
+          } */
           }
 
-          {combo.value.size !== 0
-            ? <AttackInputs inputs={combo.value} />
+          {comboList.value.size !== 0
+            ? <AttackInputs inputs={comboList.value} />
             : null}
-
-          {/* {comboDisplay.value} */}
         </>
       )}
-
-      {/* <>{comboDisplay.value}</> */}
     </div>
   );
 }

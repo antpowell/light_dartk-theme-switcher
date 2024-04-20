@@ -9,9 +9,10 @@ import {
   DirectionalInputs,
 } from "../models/MovementsModels.ts";
 import { AttackInputs } from "./CommandInputs/AttackInputs.tsx";
-import { combo } from "../shared/combo.ts";
+import { comboList } from "../shared/combo.ts";
 import { comboDisplay } from "../shared/combo.ts";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
+import { moveParser } from "../util/moveParser.ts";
 
 export const comboInputState = signal("");
 
@@ -190,13 +191,13 @@ const parseCombo = (comboInput: string) => {
 
 effect(() => {
   console.log(`combo effect running...`);
-  parseCombo(comboInputState.value);
-  combo.value = getCompoundAttackInputs(comboInputState.value) || new Set();
+  moveParser(comboInputState.value);
+  comboList.value = getCompoundAttackInputs(comboInputState.value) || new Set();
   console.log(`combo effect ran`);
   console.log(
     `new combo value: ${
-      JSON.stringify(Object.fromEntries(combo.value.entries()), null, 2)
-    } with a size of ${combo.value.size}`,
+      JSON.stringify(Object.fromEntries(comboList.value.entries()), null, 2)
+    } with a size of ${comboList.value.size}`,
   );
 });
 
@@ -220,45 +221,8 @@ export const ComboInput = () => {
         console.log(move);
       }
 
-      move.split("").forEach((command) => {
-        switch (command) {
-          case InputLanguage.DOWN_BACK.id:
-            commandMap.inputs.push(InputLanguage.DOWN_BACK.component);
-            break;
-          case InputLanguage.DOWN_FORWARD.id:
-            commandMap.inputs.push(InputLanguage.DOWN_FORWARD.component);
-            break;
-          case InputLanguage.UP_BACK.id:
-            commandMap.inputs.push(InputLanguage.UP_BACK.component);
-            break;
-          case InputLanguage.UP_FORWARD.id:
-            commandMap.inputs.push(InputLanguage.UP_FORWARD.component);
-            break;
-          case InputLanguage.BACK.id:
-            commandMap.inputs.push(InputLanguage.BACK.component);
-            break;
-          case InputLanguage.DOWN.id:
-            commandMap.inputs.push(InputLanguage.DOWN.component);
-            break;
-          case InputLanguage.FORWARD.id:
-            commandMap.inputs.push(InputLanguage.FORWARD.component);
-            break;
-          case InputLanguage.UP.id:
-            commandMap.inputs.push(InputLanguage.UP.component);
-            break;
-          // case "+":
-          // case InputLanguage.LEFT_PUNCH.id:
-          // case InputLanguage.RIGHT_PUNCH.id:
-          // case InputLanguage.LEFT_KICK.id:
-          // case InputLanguage.RIGHT_KICK.id:
-          case "Space":
-          case "Enter":
-          default:
-            return;
-        }
-      });
+      console.log(event.currentTarget.value);
     });
-    console.log(event.currentTarget.value);
   };
 
   const handleComboInputKeyUp = (

@@ -1,13 +1,13 @@
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { ActionCommand } from "../../models/MovementsModels.ts";
 import { ActionCommandInputs } from "../../models/MovementsModels.ts";
-import { combo } from "../../shared/combo.ts";
+import { comboList } from "../../shared/combo.ts";
 import { useSignalEffect } from "@preact/signals";
 
 export function AttackInputs({ inputs }: ActionCommandInputs) {
   useSignalEffect(() => {
-    console.log(`attack inputs: ${inputs}`);
-    combo.value;
+    console.log(`attack inputs: ${JSON.stringify(inputs, null, 2)}`);
+    comboList.value;
   });
 
   return (
