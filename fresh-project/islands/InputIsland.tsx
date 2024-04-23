@@ -22,10 +22,11 @@ export interface InputIslandProps {
   onChange: (event: JSX.TargetedEvent<HTMLInputElement, Event>) => void;
   onKeyUp: (event: JSX.TargetedKeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  value?: string;
 }
 
 export const InputIsland = (
-  { label, name, placeholder, onChange, onKeyUp }: InputIslandProps,
+  { label, name, placeholder, onChange, onKeyUp, value }: InputIslandProps,
 ) => {
   return (
     <>
@@ -46,6 +47,7 @@ export const InputIsland = (
             onKeyUp(e);
           }}
           placeholder={placeholder}
+          value={value}
         />
       </div>
     </>

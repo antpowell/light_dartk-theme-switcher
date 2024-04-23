@@ -9,37 +9,35 @@ import { AttackInputs } from "./CommandInputs/AttackInputs.tsx";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
 
 export default function MoveDisplay({ children }: { children?: JSX.Element }) {
-  const combo1 = useSignal<DirectionalInputs>({
-    inputs: [
-      {
-        command: DirectionalCommand.FORWARD,
-        hold: false,
-      },
-      {
-        command: DirectionalCommand.NEUTRAL,
-        hold: false,
-      },
-      {
-        command: DirectionalCommand.BACK,
-        hold: false,
-      },
-      {
-        command: DirectionalCommand.DOWN_BACK,
-        hold: false,
-      },
-    ],
-  });
+  // const combo1 = useSignal<DirectionalInputs>({
+  //   inputs: [
+  //     {
+  //       command: DirectionalCommand.FORWARD,
+  //       hold: false,
+  //     },
+  //     {
+  //       command: DirectionalCommand.NEUTRAL,
+  //       hold: false,
+  //     },
+  //     {
+  //       command: DirectionalCommand.BACK,
+  //       hold: false,
+  //     },
+  //     {
+  //       command: DirectionalCommand.DOWN_BACK,
+  //       hold: false,
+  //     },
+  //   ],
+  // });
 
   return (
     <div class={"flex gap-4 flex-row align-center"}>
       {children ? children : (
         <>
           {
-            /* {
             <MovementInputs
               inputs={moveList.value}
             />
-          } */
           }
 
           {comboList.value.size !== 0

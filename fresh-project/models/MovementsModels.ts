@@ -4,15 +4,24 @@ export type Command = DirectionalCommand & ActionCommand;
 // export interface Command extends DirectionalCommand;
 
 export enum DirectionalCommand {
-  DOWN = "D",
-  FORWARD = "F",
-  BACK = "B",
-  UP = "U",
-  DOWN_BACK = "D/B",
-  DOWN_FORWARD = "D/F",
-  UP_BACK = "U/B",
-  UP_FORWARD = "U/F",
-  NEUTRAL = "N",
+  DOWN = "d",
+  FORWARD = "f",
+  BACK = "b",
+  UP = "u",
+  DOWN_BACK = "d/b",
+  DOWN_FORWARD = "d/f",
+  UP_BACK = "u/b",
+  UP_FORWARD = "u/f",
+  NEUTRAL = "n",
+  DOWN_HOLD = "D",
+  FORWARD_HOLD = "F",
+  BACK_HOLD = "B",
+  UP_HOLD = "U",
+  DOWN_BACK_HOLD = "D/B",
+  DOWN_FORWARD_HOLD = "D/F",
+  UP_BACK_HOLD = "U/B",
+  UP_FORWARD_HOLD = "U/F",
+  NEUTRAL_HOLD = "N",
 }
 
 export interface DirectionalCommandVariants {

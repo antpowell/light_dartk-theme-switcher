@@ -16,13 +16,12 @@ export const compoundAttackRegex =
 
 // Test RegEx here: https://regex101.com/r/BFI4gl/1lk
 
-export const compoundMovementRegex =
-  /((?<![\d])[1-4]{1}\+?){1,3}((?<=\+)(?<![\d])[1-4]{1}$)/gm;
+export const compoundMovementRegex = /[fudb]\/[fudb]/gm;
 
 export const basicMovementRegex =
   /(?<!\/)(?<!\+)(?<!\d{1,})[fudb]{1,3}[H]?(?!\/)(?!\+)/g;
 
-export const BasicAttackRegex =
+export const basicAttackRegex =
   /(?<!\/)(?<!\+)(?<!\w)[1-4](?!\/)(?!\+)(?![\w])/g;
 
 export const inputString = new RegExp(
@@ -30,4 +29,6 @@ export const inputString = new RegExp(
   "g",
 );
 
-console.log(inputString.exec(`f1+2`));
+console.log(compoundAttackRegex.test(`f1+2`));
+console.log(`f1+2`.match(compoundAttackRegex));
+console.log(`f1+2`.match(basicAttackRegex));
