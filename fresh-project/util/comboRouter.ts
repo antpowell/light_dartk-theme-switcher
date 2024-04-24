@@ -15,13 +15,18 @@ import {
 
 export const comboRouter = (move: string) => {
   console.log(`parsing move... ${move}`);
+  translatedCombo.value = {};
   if (basicMovementRegex.test(move)) {
-    const { basicMovement, basicMovementIndex } = basicMovementParser(move);
-    comboReducer({ input: basicMovement, index: basicMovementIndex });
+    const { basicMovements, basicMovementIndexes } = basicMovementParser(move);
+    basicMovements.forEach((movement, index) => {
+      comboReducer({ input: movement, index: basicMovementIndexes[index] });
+    });
   }
   if (basicAttackRegex.test(move)) {
-    const { basicAttack, basicAttackIndex } = basicAttackParser(move);
-    comboReducer({ input: basicAttack, index: basicAttackIndex });
+    const { basicAttacks, basicAttackIndexes } = basicAttackParser(move);
+    basicAttacks.forEach((attack, index) => {
+      comboReducer({ input: attack, index: basicAttackIndexes[index] });
+    });
   }
   if (compoundMovementRegex.test(move)) {
     const { compoundMovement, compoundMovementIndex } = compoundMovementParser(

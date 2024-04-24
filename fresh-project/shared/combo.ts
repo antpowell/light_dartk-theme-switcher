@@ -22,13 +22,15 @@ export const basicMovementRegex =
   /(?<!\/)(?<!\+)(?<!\d{1,})[fudb]{1,3}[H]?(?!\/)(?!\+)/g;
 
 export const basicAttackRegex =
-  /(?<!\/)(?<!\+)(?<!\w)[1-4](?!\/)(?!\+)(?![\w])/g;
+  /(?<![0])(?<![5-9])(?<!\+)[1-4](?!\+)(?![5-9])(?![0])/g;
+// export const basicAttackRegex =
+//   /(?<!\/)(?<!\+)(?<!\w)[1-4](?!\/)(?!\+)(?![\w])/g;
 
 export const inputString = new RegExp(
   compoundAttackRegex.source + basicMovementRegex.source,
   "g",
 );
 
-console.log(compoundAttackRegex.test(`f1+2`));
-console.log(`f1+2`.match(compoundAttackRegex));
-console.log(`f1+2`.match(basicAttackRegex));
+// console.log(compoundAttackRegex.test(`f1+2`));
+// console.log(`f1+2`.match(compoundAttackRegex));
+// console.log(`f1+2`.match(basicAttackRegex));

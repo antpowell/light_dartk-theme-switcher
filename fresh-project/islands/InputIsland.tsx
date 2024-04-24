@@ -36,7 +36,7 @@ export const InputIsland = (
       >
         {label}
       </label>
-      <div class="relative mt-2 rounded-md shadow-sm">
+      <div class="relative mt-2 rounded-md shadow-sm w-full">
         <input
           type=""
           name={name}

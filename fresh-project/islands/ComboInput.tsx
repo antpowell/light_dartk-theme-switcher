@@ -243,7 +243,7 @@ export const ComboInput = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center p-8 ">
+    <div className="flex flex-col justify-center items-center p-8 w-full">
       <InputIsland
         label="Combo"
         name="combo"
@@ -254,3 +254,5 @@ export const ComboInput = () => {
     </div>
   );
 };
+
+// d/f3,f,3,d/f1,d/b21,d/b23,f3,2u,4
