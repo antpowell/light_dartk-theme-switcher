@@ -10,6 +10,7 @@ import * as $index from "./routes/index.tsx";
 import * as $ComboInput from "./islands/ComboInput.tsx";
 import * as $CommandInputs_AttackInputs from "./islands/CommandInputs/AttackInputs.tsx";
 import * as $CommandInputs_MovementInputs from "./islands/CommandInputs/MovementInputs.tsx";
+import * as $CommandList from "./islands/CommandList.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $InputIsland from "./islands/InputIsland.tsx";
 import * as $MoveDisplay from "./islands/MoveDisplay.tsx";
@@ -40,6 +41,7 @@ const manifest = {
     "./islands/ComboInput.tsx": $ComboInput,
     "./islands/CommandInputs/AttackInputs.tsx": $CommandInputs_AttackInputs,
     "./islands/CommandInputs/MovementInputs.tsx": $CommandInputs_MovementInputs,
+    "./islands/CommandList.tsx": $CommandList,
     "./islands/Counter.tsx": $Counter,
     "./islands/InputIsland.tsx": $InputIsland,
     "./islands/MoveDisplay.tsx": $MoveDisplay,

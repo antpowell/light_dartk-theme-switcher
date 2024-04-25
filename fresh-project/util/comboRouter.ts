@@ -39,5 +39,14 @@ export const comboRouter = (move: string) => {
     comboReducer({ input: compoundAttack, index: compoundAttackIndex });
   }
 
-  console.log(JSON.stringify(translatedCombo.value));
+  const commandList = Object.values(translatedCombo.value).map((command) =>
+    command
+  );
+  // console.log(Object.values(translatedCombo.value).map((command) => command));
+
+  console.group("commands successfully parsed:");
+  console.table(commandList);
+  console.groupEnd();
+
+  return commandList;
 };

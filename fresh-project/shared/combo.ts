@@ -18,8 +18,7 @@ export const compoundAttackRegex =
 
 export const compoundMovementRegex = /[fudb]\/[fudb]/gm;
 
-export const basicMovementRegex =
-  /(?<!\/)(?<!\+)(?<!\d{1,})[fudb]{1,3}[H]?(?!\/)(?!\+)/g;
+export const basicMovementRegex = /(?<!\/)(?<!\+)[fudb]{1,3}[H]?(?!\/)(?!\+)/g;
 
 export const basicAttackRegex =
   /(?<![0])(?<![5-9])(?<!\+)[1-4](?!\+)(?![5-9])(?![0])/g;
