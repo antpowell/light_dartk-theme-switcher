@@ -14,6 +14,7 @@ import { comboDisplay } from "../shared/combo.ts";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
 import { moveParser } from "../util/moveParser.ts";
 import { comboParser } from "../util/comboParser.ts";
+import { comboInputToComponentRouter } from "../shared/moveDisplayCreation.ts";
 
 export const comboInputState = signal("");
 
@@ -165,11 +166,11 @@ const parseCombo = (comboInput: string) => {
 
   comboInput.split(",").forEach((move) => {
     console.log(move);
-    const { hasMovement, movements } = stringToMovementMapper(move);
+    const { hasMovement, commandMap } = comboInputToComponentRouter(move);
     if (hasMovement) {
       comboDisplay.value.push(
         <MovementInputs
-          inputs={movements.inputs}
+          inputs={commandMap.input}
         />,
       );
     }
@@ -190,18 +191,6 @@ const parseCombo = (comboInput: string) => {
   });
 };
 
-// effect(() => {
-//   console.log(`combo effect running...`);
-//   moveParser(comboInputState.value);
-//   comboList.value = getCompoundAttackInputs(comboInputState.value) || new Set();
-//   console.log(`combo effect ran`);
-//   console.log(
-//     `new combo value: ${
-//       JSON.stringify(Object.fromEntries(comboList.value.entries()), null, 2)
-//     } with a size of ${comboList.value.size}`,
-//   );
-// });
-
 export const ComboInput = () => {
   const handleComboInput = (
     event: JSX.TargetedEvent<HTMLInputElement, Event>,
@@ -209,34 +198,14 @@ export const ComboInput = () => {
     event.preventDefault();
     console.log("handling combo input...");
     comboInputState.value = event.currentTarget.value;
-    event.currentTarget.value.split(",").forEach((move) => {
-      console.log(`working on move: ${move}`);
 
-      comboParser(move);
-      // if (
-      //
-      //     match any sting of the form f[optional]2[required](+3+4+1)[optional]
-      //     examples:
-      //     ✅ f1+2+3+4 or 2+3 or d/b1+2 or b1+2+4
-      //     ❌ f or 1+2+ or f1 or b db d1
-      //
-      //    move.trim().search(/^[fudb]?[1-4](\+[1-4]){0,3}$/g) !== -1
-      //   move.trim().search(compoundMovementRegex) !== -1
-      // ) {
-      //   console.log(`compound movement found: ${move}`);
-      // }
-
-      console.log(event.currentTarget.value);
-    });
+    comboParser(event.currentTarget.value);
   };
 
   const handleComboInputKeyUp = (
     event: JSX.TargetedKeyboardEvent<HTMLInputElement>,
   ) => {
     if (event.key === "Enter") {
-      // if(validInput){
-
-      // }
       console.log(`enter pressed with value: ${event.currentTarget.value}`);
       comboInputState.value = event.currentTarget.value;
     }

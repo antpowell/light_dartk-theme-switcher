@@ -4,7 +4,8 @@ import {
   compoundAttackRegex,
   compoundMovementRegex,
 } from "../shared/combo.ts";
-import { translatedCombo } from "./comboParser.ts";
+
+import { translatedCombo } from "../shared/state/signals.ts";
 import { comboReducer } from "./comboReducer.ts";
 import {
   basicAttackParser,
@@ -39,9 +40,8 @@ export const comboRouter = (move: string) => {
     comboReducer({ input: compoundAttack, index: compoundAttackIndex });
   }
 
-  const commandList = Object.values(translatedCombo.value).map((command) =>
-    command
-  );
+  const commandList: string[] = Object.values<string>(translatedCombo.value)
+    .map((command) => command);
   // console.log(Object.values(translatedCombo.value).map((command) => command));
 
   console.group("commands successfully parsed:");

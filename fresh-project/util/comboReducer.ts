@@ -1,4 +1,4 @@
-import { translatedCombo } from "./comboParser.ts";
+import { translatedCombo } from "../shared/state/signals.ts";
 
 export const comboReducer = (
   { index, input }: { index: number; input: string },

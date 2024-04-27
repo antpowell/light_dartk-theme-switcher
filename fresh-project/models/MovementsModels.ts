@@ -3,6 +3,8 @@ import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 export type Command = DirectionalCommand & ActionCommand;
 // export interface Command extends DirectionalCommand;
 
+export type DirectionalCommandKeys = keyof typeof DirectionalCommand;
+
 export enum DirectionalCommand {
   DOWN = "d",
   FORWARD = "f",
@@ -22,6 +24,9 @@ export enum DirectionalCommand {
   UP_BACK_HOLD = "U/B",
   UP_FORWARD_HOLD = "U/F",
   NEUTRAL_HOLD = "N",
+  WHILE_RAISING = "WR",
+
+  COUNTER_HIT = "CH",
 }
 
 export interface DirectionalCommandVariants {
@@ -44,6 +49,8 @@ export type DirectionalInputs = Record<
   "inputs",
   DirectionalInput[]
 >;
+
+export type ActionCommandKeys = keyof typeof ActionCommand;
 
 export enum ActionCommand {
   LP = "1",
