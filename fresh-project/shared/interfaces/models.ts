@@ -1,10 +1,13 @@
-import { DirectionalCommand } from "../../models/MovementsModels.ts";
+import {
+  ActionCommand,
+  DirectionalCommand,
+} from "../../models/MovementsModels.ts";
 
-export type commandMapType = {
-  input: Array<InputLanguageCommandType>;
+export type CommandMapType = {
+  inputs: Array<InputLanguageCommandType>;
 };
 
 export type InputLanguageCommandType = {
   hold: boolean;
-  command: DirectionalCommand;
+  command: DirectionalCommand | ActionCommand;
 };

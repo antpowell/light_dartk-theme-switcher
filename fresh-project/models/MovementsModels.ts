@@ -25,7 +25,6 @@ export enum DirectionalCommand {
   UP_FORWARD_HOLD = "U/F",
   NEUTRAL_HOLD = "N",
   WHILE_RAISING = "WR",
-
   COUNTER_HIT = "CH",
 }
 
@@ -36,7 +35,7 @@ export interface DirectionalCommandVariants {
 export type DirectionalInput =
   & Record<
     "command",
-    Partial<DirectionalCommand>
+    Partial<Command>
   >
   & DirectionalCommandVariants;
 

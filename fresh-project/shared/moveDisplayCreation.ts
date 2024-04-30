@@ -1,8 +1,8 @@
 import { InputLanguage } from "../models/InputLanguage.ts";
-import { commandMapType } from "./interfaces/models.ts";
+import { CommandMapType } from "./interfaces/models.ts";
 
-const commandMap: commandMapType = {
-  input: [],
+const commandMap: CommandMapType = {
+  inputs: [],
 };
 
 export const comboInputToComponentRouter = (command: string) => {
@@ -10,41 +10,40 @@ export const comboInputToComponentRouter = (command: string) => {
   let hasMovement = true;
   switch (command) {
     case InputLanguage.DOWN_BACK.id:
-      commandMap.input.push(InputLanguage.DOWN_BACK.component);
+      commandMap.inputs.push(InputLanguage.DOWN_BACK.component);
       break;
     case InputLanguage.DOWN_FORWARD.id:
-      commandMap.input.push(InputLanguage.DOWN_FORWARD.component);
+      commandMap.inputs.push(InputLanguage.DOWN_FORWARD.component);
       break;
     case InputLanguage.UP_BACK.id:
-      commandMap.input.push(InputLanguage.UP_BACK.component);
+      commandMap.inputs.push(InputLanguage.UP_BACK.component);
       break;
     case InputLanguage.UP_FORWARD.id:
-      commandMap.input.push(InputLanguage.UP_FORWARD.component);
+      commandMap.inputs.push(InputLanguage.UP_FORWARD.component);
       break;
     case InputLanguage.BACK.id:
-      commandMap.input.push(InputLanguage.BACK.component);
+      commandMap.inputs.push(InputLanguage.BACK.component);
       break;
     case InputLanguage.DOWN.id:
-      commandMap.input.push(InputLanguage.DOWN.component);
+      commandMap.inputs.push(InputLanguage.DOWN.component);
       break;
     case InputLanguage.FORWARD.id:
-      commandMap.input.push(InputLanguage.FORWARD.component);
+      commandMap.inputs.push(InputLanguage.FORWARD.component);
       break;
     case InputLanguage.UP.id:
-      commandMap.input.push(InputLanguage.UP.component);
+      commandMap.inputs.push(InputLanguage.UP.component);
       break;
-    // case "+":
     case InputLanguage.LP.id:
-      commandMap.input.push(InputLanguage.LP.component);
+      commandMap.inputs.push(InputLanguage.LP.component);
       break;
     case InputLanguage.RP.id:
-      commandMap.input.push(InputLanguage.RP.component);
+      commandMap.inputs.push(InputLanguage.RP.component);
       break;
     case InputLanguage.LK.id:
-      commandMap.input.push(InputLanguage.LK.component);
+      commandMap.inputs.push(InputLanguage.LK.component);
       break;
     case InputLanguage.RK.id:
-      commandMap.input.push(InputLanguage.RK.component);
+      commandMap.inputs.push(InputLanguage.RK.component);
       break;
     case "Space":
     case "Enter":
@@ -52,6 +51,7 @@ export const comboInputToComponentRouter = (command: string) => {
       hasMovement = false;
   }
   console.table(commandMap);
+  console.log(JSON.stringify(commandMap));
 
   return { hasMovement, commandMap };
 };

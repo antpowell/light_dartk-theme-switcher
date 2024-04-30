@@ -103,63 +103,7 @@ export const comboInputElements = signal<JSX.Element[]>([]);
 
 let commandMap: DirectionalInputs;
 
-const stringToMovementMapper = (inputs: string) => {
-  console.log("string to movement mapper...");
-  const movements: DirectionalInputs = { inputs: [] };
-  let hasMovement = false;
 
-  inputs.split("").forEach((input) => {
-    hasMovement = true;
-    switch (input.toUpperCase()) {
-      case InputLanguage.DOWN_BACK.id:
-        movements.inputs.push(InputLanguage.DOWN_BACK.component);
-        break;
-      case InputLanguage.DOWN_FORWARD.id:
-        movements.inputs.push(InputLanguage.DOWN_FORWARD.component);
-        break;
-      case InputLanguage.UP_BACK.id:
-        movements.inputs.push(InputLanguage.UP_BACK.component);
-        break;
-      case InputLanguage.UP_FORWARD.id:
-        movements.inputs.push(InputLanguage.UP_FORWARD.component);
-        break;
-      case InputLanguage.BACK.id:
-        movements.inputs.push(InputLanguage.BACK.component);
-        break;
-      case InputLanguage.DOWN.id:
-        movements.inputs.push(InputLanguage.DOWN.component);
-        break;
-      case InputLanguage.FORWARD.id:
-        movements.inputs.push(InputLanguage.FORWARD.component);
-        break;
-      case InputLanguage.UP.id:
-        movements.inputs.push(InputLanguage.UP.component);
-        break;
-      // case "+":
-      // case InputLanguage.LEFT_PUNCH.id:
-      // case InputLanguage.RIGHT_PUNCH.id:
-      // case InputLanguage.LEFT_KICK.id:
-      // case InputLanguage.RIGHT_KICK.id:
-      case "Space":
-      case "Enter":
-      default:
-        hasMovement = false;
-        return;
-    }
-  });
-  console.log(
-    `stringToMovementMapper: ${
-      JSON.stringify(
-        movements.inputs,
-        null,
-        2,
-      )
-    }`,
-  );
-
-  console.log("string to movement mapper ran...");
-  return { hasMovement, movements };
-};
 
 const parseCombo = (comboInput: string) => {
   console.log("parsing combo...");
@@ -170,7 +114,7 @@ const parseCombo = (comboInput: string) => {
     if (hasMovement) {
       comboDisplay.value.push(
         <MovementInputs
-          inputs={commandMap.input}
+          inputs={commandMap.inputs}
         />,
       );
     }

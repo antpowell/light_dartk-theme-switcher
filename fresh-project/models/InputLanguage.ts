@@ -13,7 +13,7 @@ export type InputLanguageType = {
   };
 };
 
-export const InputLanguage: InputLanguageType = {
+export const InputLanguage = {
   DOWN: {
     id: "d",
     component: {
@@ -154,33 +154,33 @@ export const InputLanguage: InputLanguageType = {
       hold: false,
       command: DirectionalCommand.NEUTRAL,
     },
-    LP: {
-      id: "1",
-      component: {
-        hold: false,
-        command: ActionCommand.LP,
-      },
+  },
+  LP: {
+    id: "1",
+    component: {
+      hold: false,
+      command: ActionCommand.LP,
     },
-    RP: {
-      id: "2",
-      component: {
-        hold: false,
-        command: ActionCommand.RP,
-      },
+  },
+  RP: {
+    id: "2",
+    component: {
+      hold: false,
+      command: ActionCommand.RP,
     },
-    LK: {
-      id: "3",
-      component: {
-        hold: false,
-        command: ActionCommand.LK,
-      },
+  },
+  LK: {
+    id: "3",
+    component: {
+      hold: false,
+      command: ActionCommand.LK,
     },
-    RK: {
-      id: "4",
-      component: {
-        hold: false,
-        command: ActionCommand.RK,
-      },
+  },
+  RK: {
+    id: "4",
+    component: {
+      hold: false,
+      command: ActionCommand.RK,
     },
   },
 } as const;
