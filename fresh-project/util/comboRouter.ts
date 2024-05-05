@@ -36,8 +36,14 @@ export const comboRouter = (move: string) => {
     comboReducer({ input: compoundMovement, index: compoundMovementIndex });
   }
   if (compoundAttackRegex.test(move)) {
-    const { compoundAttack, compoundAttackIndex } = compoundAttackParser(move);
-    comboReducer({ input: compoundAttack, index: compoundAttackIndex });
+    const { compoundAttackSet, compoundAttackIndex } = compoundAttackParser(
+      move,
+    );
+    comboReducer({ input: compoundAttackSet, index: compoundAttackIndex });
+    // compoundAttackMap.forEach(
+    //   (attack, index) => comboReducer({ input: index, index: attack }),
+    // );
+    // comboReducer({ input: compoundAttack, index: compoundAttackIndex });
   }
 
   const commandList: string[] = Object.values<string>(translatedCombo.value)

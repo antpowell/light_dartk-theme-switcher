@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals";
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 import {
+  ActionCommand,
   DirectionalCommand,
   DirectionalInputs,
 } from "../models/MovementsModels.ts";
@@ -34,16 +35,34 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
     <div class={"flex gap-4 flex-row align-center"}>
       {children ? children : (
         <>
-          {
-            <MovementInputs
-              inputs={moveList.value}
-            />
-          }
-
-          {comboList.value.size !== 0
-            ? <AttackInputs inputs={comboList.value} />
-            : null}
+          <div className="flex flex-col items-center">
+            <h1 class={`text-lg font-bold`}>Move Display</h1>
+            <div>
+              <MovementInputs
+                inputs={[{
+                  command: new Set<ActionCommand>([
+                    ActionCommand.LK,
+                    ActionCommand.RK,
+                  ]),
+                  hold: false,
+                }]}
+              />
+            </div>
+          </div>
         </>
+        // <>
+        //   <h1 class={`text-lg font-bold`}>Move Display</h1>
+
+        //   {
+        //     <MovementInputs
+        //       inputs={moveList.value}
+        //     />
+        //   }
+
+        //   {comboList.value.size !== 0
+        //     ? <AttackInputs inputs={comboList.value} />
+        //     : null}
+        // </>
       )}
     </div>
   );

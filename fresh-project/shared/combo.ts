@@ -1,8 +1,7 @@
 // @deno-types='https://deno.land/x/xregexp/types/index.d.ts';
 import { signal } from "@preact/signals";
-import { ActionCommand } from "../models/MovementsModels.ts";
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
-import XRegExp from "https://deno.land/x/xregexp@v1.0.1/src/index.js";
+import { ActionCommand } from "../models/MovementsModels.ts";
 
 export const comboList = signal<Set<ActionCommand>>(new Set());
 
@@ -16,9 +15,13 @@ export const compoundAttackRegex =
 
 // Test RegEx here: https://regex101.com/r/BFI4gl/1lk
 
-export const compoundMovementRegex = /[fudb]\/[fudb]/gm;
+export const compoundMovementRegex = /[fudbFUDB]\/[fudbFUDB]/gm;
 
-export const basicMovementRegex = /(?<!\/)(?<!\+)[fudb]{1,3}[H]?(?!\/)(?!\+)/g;
+const basicMovementRegexCore = /(?<!\/)(?<!\+)[fudbFUDB](?!\/)(?!\+)/g;
+const basicMovementRegex2 =
+  /(?<!\+)(?<!\/)(?<![fudbFUDB])(?<![\w])(?<![5-9|0])[fudbFUDB](?!\+)(?!\/)(?![fudbFUDB])(?![5-9|0])(?![\w])/g;
+export const basicMovementRegex =
+  /(?<!\+)(?<!\/)(?<![fudbFUDB])(?<![5-9|0])[fudbFUDB](?![5-9|0])(?![fudbFUDB])(?!\+)(?!\/)/g;
 
 export const basicAttackRegex =
   /(?<![0])(?<![5-9])(?<!\+)[1-4](?!\+)(?![5-9])(?![0])/g;

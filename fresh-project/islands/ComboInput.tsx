@@ -1,20 +1,9 @@
-import { computed, effect, signal } from "@preact/signals";
+import { signal } from "@preact/signals";
 import type { JSX } from "preact";
 import { InputIsland } from "./InputIsland.tsx";
-import { InputLanguage } from "../models/InputLanguage.ts";
 
-import {
-  ActionCommand,
-  DirectionalCommand,
-  DirectionalInputs,
-} from "../models/MovementsModels.ts";
-import { AttackInputs } from "./CommandInputs/AttackInputs.tsx";
-import { comboList, compoundMovementRegex } from "../shared/combo.ts";
-import { comboDisplay } from "../shared/combo.ts";
-import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
-import { moveParser } from "../util/moveParser.ts";
+import { ActionCommand, DirectionalInputs } from "../models/MovementsModels.ts";
 import { comboParser } from "../util/comboParser.ts";
-import { comboInputToComponentRouter } from "../shared/moveDisplayCreation.ts";
 
 export const comboInputState = signal("");
 
@@ -84,56 +73,9 @@ const getAttackCommandSetFromString = (attack: string) => {
   return attackCommandSet;
 };
 
-const getCompoundAttackInputs = (
-  command: string,
-) => {
-  const { isCompoundAttack, data: attackCommand } = compoundInputFinder(
-    command,
-  );
-  if (!isCompoundAttack) return;
-  return getAttackCommandSetFromString(
-    attackCommand as string,
-  );
-};
-
-const comboMoveMaker = computed(() => {
-});
-
 export const comboInputElements = signal<JSX.Element[]>([]);
 
 let commandMap: DirectionalInputs;
-
-
-
-const parseCombo = (comboInput: string) => {
-  console.log("parsing combo...");
-
-  comboInput.split(",").forEach((move) => {
-    console.log(move);
-    const { hasMovement, commandMap } = comboInputToComponentRouter(move);
-    if (hasMovement) {
-      comboDisplay.value.push(
-        <MovementInputs
-          inputs={commandMap.inputs}
-        />,
-      );
-    }
-
-    const { isCompoundAttack, data: compoundAttack } = compoundInputFinder(
-      move,
-    );
-
-    if (isCompoundAttack) {
-      console.log(`compound attack found: ${compoundAttack}`);
-
-      comboDisplay.value.push(
-        <AttackInputs
-          inputs={getAttackCommandSetFromString(compoundAttack as string)}
-        />,
-      );
-    }
-  });
-};
 
 export const ComboInput = () => {
   const handleComboInput = (

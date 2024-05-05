@@ -1,8 +1,8 @@
-import { signal } from "@preact/signals";
-import { CommandMapType } from "../interfaces/models.ts";
+import { Signal, signal } from "@preact/signals";
+import { CommandMapType, CommandMapTypeSignal } from "../interfaces/models.ts";
 
 export const translatedCombo = signal({});
 
-export const commandMapSignal = signal<CommandMapType>({
-  inputs: [],
+export const commandMapSignal: Signal<CommandMapTypeSignal> = signal({
+  inputs: signal([]),
 });
