@@ -1,16 +1,56 @@
-import { signal } from "@preact/signals";
 import { InputLanguage } from "../models/InputLanguage.ts";
-import { CommandMapTypeSignal } from "./interfaces/models.ts";
-import { CommandMapType } from "./interfaces/models.ts";
+import { ActionCommand } from "../models/MovementsModels.ts";
+import { CommandMapType, InputLanguageCommand } from "./interfaces/models.ts";
 import { commandMapSignal } from "./state/signals.ts";
 
 const commandMap: CommandMapType = {
   inputs: [],
 };
 
-export const comboInputToComponentRouter = (command: string) => {
+export const comboInputToComponentRouter = (command: InputLanguageCommand) => {
   console.log(`finding command for ${command}`);
   let hasMovement = true;
+
+  if (command instanceof Set) {
+    const componentSet = new Set<ActionCommand>();
+    // const componentSet: InputLanguageCommandType[] = [];
+    command.forEach((input) => {
+      switch (input) {
+        case InputLanguage.LP.id:
+          componentSet.add(InputLanguage.LP.component);
+          // componentSet.push(InputLanguage.LP.component);
+          // commandMap.inputs.push(InputLanguage.LP.component);
+          // commandMapSignal.value.inputs.value.push(InputLanguage.LP.component);
+          break;
+        case InputLanguage.RP.id:
+          componentSet.add(InputLanguage.RP.component);
+          // componentSet.push(InputLanguage.RP.component);
+          // commandMap.inputs.push(InputLanguage.RP.component);
+          // commandMapSignal.value.inputs.value.push(InputLanguage.RP.component);
+          break;
+        case InputLanguage.LK.id:
+          componentSet.add(InputLanguage.LK.component);
+          // componentSet.push(InputLanguage.LK.component);
+          // commandMap.inputs.push(InputLanguage.LK.component);
+          // commandMapSignal.value.inputs.value.push(InputLanguage.LK.component);
+          break;
+        case InputLanguage.RK.id:
+          componentSet.add(InputLanguage.RK.component);
+          // componentSet.push(InputLanguage.RK.component);
+          // commandMap.inputs.push(InputLanguage.RK.component);
+          // commandMapSignal.value.inputs.value.push(InputLanguage.RK.component);
+          break;
+        default:
+          hasMovement = false;
+      }
+    });
+
+    commandMapSignal.value.inputs.value = [
+      ...commandMapSignal.value.inputs.value,
+      componentSet,
+    ];
+  }
+
   switch (command) {
     case InputLanguage.DOWN_BACK.id:
       commandMap.inputs.push(InputLanguage.DOWN_BACK.component);
@@ -67,8 +107,6 @@ export const comboInputToComponentRouter = (command: string) => {
       commandMap.inputs.push(InputLanguage.RK.component);
       commandMapSignal.value.inputs.value.push(InputLanguage.RK.component);
       break;
-    case "Space":
-    case "Enter":
     default:
       hasMovement = false;
   }

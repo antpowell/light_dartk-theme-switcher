@@ -1,9 +1,12 @@
+import { ActionCommand } from "../models/MovementsModels.ts";
+import { Command } from "../models/MovementsModels.ts";
 import {
   basicAttackRegex,
   basicMovementRegex,
   compoundAttackRegex,
   compoundMovementRegex,
 } from "../shared/combo.ts";
+import { InputLanguageCommand } from "../shared/interfaces/models.ts";
 
 import { translatedCombo } from "../shared/state/signals.ts";
 import { comboReducer } from "./comboReducer.ts";
@@ -30,25 +33,26 @@ export const comboRouter = (move: string) => {
     });
   }
   if (compoundMovementRegex.test(move)) {
-    const { compoundMovement, compoundMovementIndex } = compoundMovementParser(
+    const { compoundMovements, compoundMovementIndex } = compoundMovementParser(
       move,
     );
-    comboReducer({ input: compoundMovement, index: compoundMovementIndex });
+    compoundMovements.forEach((movement, index) => {
+      comboReducer({ input: movement, index: compoundMovementIndex[index] });
+    });
   }
   if (compoundAttackRegex.test(move)) {
     const { compoundAttackSet, compoundAttackIndex } = compoundAttackParser(
       move,
     );
     comboReducer({ input: compoundAttackSet, index: compoundAttackIndex });
-    // compoundAttackMap.forEach(
-    //   (attack, index) => comboReducer({ input: index, index: attack }),
-    // );
-    // comboReducer({ input: compoundAttack, index: compoundAttackIndex });
   }
 
-  const commandList: string[] = Object.values<string>(translatedCombo.value)
+  const commandList = Object.values<
+    InputLanguageCommand
+  >(
+    translatedCombo.value,
+  )
     .map((command) => command);
-  // console.log(Object.values(translatedCombo.value).map((command) => command));
 
   console.group("commands successfully parsed:");
   console.table(commandList);

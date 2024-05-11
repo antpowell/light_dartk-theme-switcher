@@ -7,7 +7,20 @@ export const compoundAttackParser = (move: string) => {
   const compoundAttack = move.match(compoundAttackRegex)![0];
 
   compoundAttack.split("+").forEach((attack) => {
-    compoundAttackSet.add(attack);
+    switch (attack) {
+      case "1":
+        compoundAttackSet.add(ActionCommand.LP);
+        break;
+      case "2":
+        compoundAttackSet.add(ActionCommand.RP);
+        break;
+      case "3":
+        compoundAttackSet.add(ActionCommand.LK);
+        break;
+      case "4":
+        compoundAttackSet.add(ActionCommand.RK);
+    }
+    // compoundAttackSet.add(attack);
     compoundAttackMap.set(attack, move.indexOf(attack));
   });
 

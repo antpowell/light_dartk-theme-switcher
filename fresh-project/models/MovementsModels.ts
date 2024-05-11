@@ -1,31 +1,42 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 
-export type Command = DirectionalCommand & ActionCommand;
+export type Command = DirectionalCommand | ActionCommand;
 // export interface Command extends DirectionalCommand;
 
-export type DirectionalCommandKeys = keyof typeof DirectionalCommand;
+export type DirectionalCommandKeys = keyof DirectionalCommand;
 
-export enum DirectionalCommand {
+export type DirectionalCommand =
+  | BasicDirectionalCommand
+  | CompoundDirectionalCommand
+  | SpecialCommand;
+
+export enum SpecialCommand {
+  NEUTRAL = "n",
+  NEUTRAL_HOLD = "N",
+  WHILE_RAISING = "WR",
+  COUNTER_HIT = "CH",
+}
+
+export enum BasicDirectionalCommand {
   DOWN = "d",
   FORWARD = "f",
   BACK = "b",
   UP = "u",
-  DOWN_BACK = "d/b",
-  DOWN_FORWARD = "d/f",
-  UP_BACK = "u/b",
-  UP_FORWARD = "u/f",
-  NEUTRAL = "n",
   DOWN_HOLD = "D",
   FORWARD_HOLD = "F",
   BACK_HOLD = "B",
   UP_HOLD = "U",
+}
+
+export enum CompoundDirectionalCommand {
+  DOWN_BACK = "d/b",
+  DOWN_FORWARD = "d/f",
+  UP_BACK = "u/b",
+  UP_FORWARD = "u/f",
   DOWN_BACK_HOLD = "D/B",
   DOWN_FORWARD_HOLD = "D/F",
   UP_BACK_HOLD = "U/B",
   UP_FORWARD_HOLD = "U/F",
-  NEUTRAL_HOLD = "N",
-  WHILE_RAISING = "WR",
-  COUNTER_HIT = "CH",
 }
 
 export interface DirectionalCommandVariants {
@@ -39,11 +50,6 @@ export type DirectionalInput =
   >
   & DirectionalCommandVariants;
 
-/* The `DirectionalInputs` interface is defining a type that represents a collection of directional inputs. It has a
-property named `inputs` which is a record where the keys are `DirectionalCommand` enum values and the values are objects
-of type `DirectionalCommandVariants`. This structure allows you to map each `DirectionalCommand` to its corresponding
-`DirectionalCommandVariants` object, providing a way to store and access information about different directional
-commands in a structured manner. */
 export type DirectionalInputs = Record<
   "inputs",
   DirectionalInput[]

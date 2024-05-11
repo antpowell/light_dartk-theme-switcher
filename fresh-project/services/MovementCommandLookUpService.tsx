@@ -1,9 +1,5 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
-import {
-  DirectionalCommand,
-  DirectionalCommandVariants,
-  DirectionalInputs,
-} from "../models/MovementsModels.ts";
+import { AttackInputs } from "../islands/CommandInputs/AttackInputs.tsx";
 import {
   B,
   D,
@@ -15,13 +11,11 @@ import {
   UF,
   Up,
 } from "../islands/MovementInputs/index.ts";
-import { DirectionalInput } from "../models/MovementsModels.ts";
-import { signal } from "@preact/signals";
 import {
   CommandMapType,
   InputLanguageCommandType,
 } from "../shared/interfaces/models.ts";
-import { AttackInputs } from "../islands/CommandInputs/AttackInputs.tsx";
+import { ActionCommand } from "../models/MovementsModels.ts";
 
 type getComponentProps = {
   key: number;
@@ -53,9 +47,13 @@ function getComponent(
     case "N":
       return <N key={key} hold={hold} />;
     case "1":
+      return <AttackInputs key={key} inputs={new Set([command])} />;
     case "2":
+      return <AttackInputs key={key} inputs={new Set([command])} />;
     case "3":
+      return <AttackInputs key={key} inputs={new Set([command])} />;
     case "4":
+      return <AttackInputs key={key} inputs={new Set([command])} />;
       // case "1+2":
       // case "1+3":
       // case "1+4":
@@ -75,6 +73,7 @@ function getComponent(
 export function CommandLookUpService(
   { inputs }: CommandMapType,
 ): JSX.Element {
+  const componentGroup: JSX.Element[] = [];
   // const commandList = signal<JSX.Element[]>([]);
   // const commandList: JSX.Element[] = [];
 
@@ -83,13 +82,47 @@ export function CommandLookUpService(
   //   commandList.push(getComponent({ command, hold, key: index }));
   // });
 
-  const commandList = inputs.map(({ command, hold }, index) =>
-    getComponent({ command, hold, key: index })
-  );
+  // const computedComponents = computed(() => {
+  //   return commandMapSignal.value.inputs.value.map(({ command, hold }, index) =>
+  //     getComponent({ command, hold, key: index })
+  //   );
+  // });
+
+  // const commandList = inputs.map(({ command, hold }, index) =>
+  //   getComponent({ command, hold, key: index })
+  // );
 
   // commandList.forEach((command) =>
   //   // console.log(`command in commandList: ${JSON.stringify(command, null, 2)}`)
   // );
 
-  return <>{commandList}</>;
+  inputs.map((input, index) => {
+    if (input instanceof Set) {
+      // TODO: is Set<InputLanguageCommandType> the same as Set<ActionCommand>???
+      componentGroup.push(
+        <AttackInputs
+          key={index}
+          inputs={input as unknown as Set<ActionCommand>}
+        />,
+      );
+      // return (
+      //   <AttackInputs
+      //     key={index}
+      //     inputs={input as unknown as Set<ActionCommand>}
+      //   />
+      // );
+    } else {
+      componentGroup.push(getComponent({
+        command: input.command,
+        hold: input.hold,
+        key: index,
+      }));
+      // return getComponent({
+      //   command: input.command,
+      //   hold: input.hold,
+      //   key: index,
+      // });
+    }
+  });
+  return <>{componentGroup}</>;
 }

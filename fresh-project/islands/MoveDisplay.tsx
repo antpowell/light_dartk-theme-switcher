@@ -1,35 +1,35 @@
-import { useSignal } from "@preact/signals";
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 import {
   ActionCommand,
   DirectionalCommand,
-  DirectionalInputs,
 } from "../models/MovementsModels.ts";
-import { comboList, moveList } from "../shared/combo.ts";
-import { AttackInputs } from "./CommandInputs/AttackInputs.tsx";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
+import { translatedCombo } from "../shared/state/signals.ts";
+import { commandMapSignal } from "../shared/state/signals.ts";
+import { computed, effect } from "@preact/signals";
 
 export default function MoveDisplay({ children }: { children?: JSX.Element }) {
-  // const combo1 = useSignal<DirectionalInputs>({
-  //   inputs: [
-  //     {
-  //       command: DirectionalCommand.FORWARD,
-  //       hold: false,
-  //     },
-  //     {
-  //       command: DirectionalCommand.NEUTRAL,
-  //       hold: false,
-  //     },
-  //     {
-  //       command: DirectionalCommand.BACK,
-  //       hold: false,
-  //     },
-  //     {
-  //       command: DirectionalCommand.DOWN_BACK,
-  //       hold: false,
-  //     },
-  //   ],
-  // });
+  // const combo1 = [{
+  //   command: new Set<ActionCommand>([
+  //     ActionCommand.LK,
+  //     ActionCommand.RK,
+  //   ]),
+  //   hold: false,
+  // }];
+
+  const components = computed(() => {
+    return commandMapSignal.value.inputs.value.map((component, index) => {
+      return component;
+    });
+  });
+  console.log("📔 ~ components ~ components:", components.value);
+
+  const combo1 = [{
+    command: new Set<ActionCommand>([
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }];
 
   return (
     <div class={"flex gap-4 flex-row align-center"}>
@@ -38,15 +38,13 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
           <div className="flex flex-col items-center">
             <h1 class={`text-lg font-bold`}>Move Display</h1>
             <div>
-              <MovementInputs
-                inputs={[{
-                  command: new Set<ActionCommand>([
-                    ActionCommand.LK,
-                    ActionCommand.RK,
-                  ]),
-                  hold: false,
-                }]}
-              />
+              {
+                /* <MovementInputs
+                inputs={combo1}
+              /> */
+              }
+              <MovementInputs inputs={commandMapSignal.value.inputs.value} />
+              {/* <MovementInputs inputs={translatedCombo.value} /> */}
             </div>
           </div>
         </>
