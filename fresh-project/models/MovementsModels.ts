@@ -1,14 +1,14 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 
-export type Command = DirectionalCommand | ActionCommand;
+export type Command = DirectionalCommand | ActionCommandKeys;
 // export interface Command extends DirectionalCommand;
 
-export type DirectionalCommandKeys = keyof DirectionalCommand;
-
 export type DirectionalCommand =
-  | BasicDirectionalCommand
-  | CompoundDirectionalCommand
-  | SpecialCommand;
+  | BasicDirectionalCommandKeys
+  | CompoundDirectionalCommandKeys
+  | SpecialCommandKeys;
+
+export type SpecialCommandKeys = keyof typeof SpecialCommand;
 
 export enum SpecialCommand {
   NEUTRAL = "n",
@@ -16,6 +16,8 @@ export enum SpecialCommand {
   WHILE_RAISING = "WR",
   COUNTER_HIT = "CH",
 }
+
+export type BasicDirectionalCommandKeys = keyof typeof BasicDirectionalCommand;
 
 export enum BasicDirectionalCommand {
   DOWN = "d",
@@ -27,6 +29,9 @@ export enum BasicDirectionalCommand {
   BACK_HOLD = "B",
   UP_HOLD = "U",
 }
+
+export type CompoundDirectionalCommandKeys =
+  keyof typeof CompoundDirectionalCommand;
 
 export enum CompoundDirectionalCommand {
   DOWN_BACK = "d/b",

@@ -1,8 +1,10 @@
 import { Signal } from "@preact/signals";
 import {
   ActionCommand,
+  ActionCommandKeys,
   DirectionalCommand,
 } from "../../models/MovementsModels.ts";
+import { Command } from "../../models/MovementsModels.ts";
 
 export type CommandMapType = {
   inputs: Array<InputLanguageCommandType | Set<ActionCommand>>;
@@ -10,12 +12,12 @@ export type CommandMapType = {
 
 export type InputLanguageCommand =
   | DirectionalCommand
-  | ActionCommand
+  | ActionCommandKeys
   | Set<ActionCommand>;
 
 export type InputLanguageCommandType = {
   hold: boolean;
-  command: InputLanguageCommand;
+  command: Command;
 };
 
 export type CommandMapTypeSignal = {
