@@ -6,7 +6,10 @@ import {
   compoundAttackRegex,
   compoundMovementRegex,
 } from "../shared/combo.ts";
-import { InputLanguageCommandKeys } from "../shared/interfaces/models.ts";
+import {
+  InputLanguageCommand,
+  InputLanguageCommandKeys,
+} from "../shared/interfaces/models.ts";
 
 import { translatedCombo } from "../shared/state/signals.ts";
 import { comboReducer } from "./comboReducer.ts";
@@ -48,7 +51,7 @@ export const comboRouter = (move: string) => {
   }
 
   const commandList = Object.values<
-    InputLanguageCommandKeys
+    InputLanguageCommand
   >(
     translatedCombo.value,
   )

@@ -1,15 +1,12 @@
 import { signal } from "@preact/signals";
-import { comboRouter } from "./comboRouter.ts";
+import { InputLanguageCommand } from "../shared/interfaces/models.ts";
 import { comboInputToComponentRouter } from "../shared/moveDisplayCreation.ts";
-import {
-  CommandMapType,
-  InputLanguageCommandKeys,
-} from "../shared/interfaces/models.ts";
 import { commandMapSignal } from "../shared/state/signals.ts";
+import { comboRouter } from "./comboRouter.ts";
 
 type MoveMapType = Map<
   number,
-  { move: string; breakdown: InputLanguageCommandKeys[] }
+  { move: string; breakdown: InputLanguageCommand[] }
 > // { move: string; breakdown: InputLanguageCommandType[] }
 ;
 
@@ -36,36 +33,4 @@ export const comboParser = (combo: string) => {
       comboInputToComponentRouter(input);
     });
   });
-
-  // Object.entries(moveMap.value).forEach(
-  //   ([index, { move, breakdown }]: MoveMapType, key) => {
-  // console.log(`each move: `, move);
-  // breakdown.forEach((value, index) => {
-  //   if (index === 1) {
-  //     console.log("breakdown: ", value.breakdown);
-  //     value.breakdown.forEach((input: string) => {
-  //       const { hasMovement, commandMap } = comboInputToComponentRouter(
-  //         input,
-  //       );
-  //       localHasMovement = hasMovement;
-  //       localCommandMap = commandMap;
-  //     });
-  //     // console.group();
-  //     // console.log("signal");
-  //     // console.table(commandMapSignal.value.inputs.value);
-  //     // console.log(
-  //     //   "🚀 ~ value.breakdown.forEach ~ hasMovement:",
-  //     //   localHasMovement,
-  //     // );
-  //     // console.log(
-  //     //   "🚀 ~ value.breakdown.forEach ~ commandMap:",
-  //     //   localCommandMap,
-  //     // );
-  //     // console.groupEnd();
-  //   }
-  // });
-  // },
-  // );
 };
-
-// comboParser("f1+2,d/b1");

@@ -1,9 +1,8 @@
 import { InputLanguage } from "../models/InputLanguage.ts";
-import { Command, CommandKeys } from "../models/MovementsModels.ts";
-import { InputLanguageCommandType } from "./interfaces/models.ts";
 import {
   CommandMapType,
-  InputLanguageCommandKeys,
+  InputLanguageCommand,
+  InputLanguageCommandType,
 } from "./interfaces/models.ts";
 import { commandMapSignal } from "./state/signals.ts";
 
@@ -12,7 +11,7 @@ const commandMap: CommandMapType = {
 };
 
 export const comboInputToComponentRouter = (
-  command: InputLanguageCommandKeys,
+  command: InputLanguageCommand,
 ) => {
   console.log(`finding command for ${command}`);
   let hasMovement = true;

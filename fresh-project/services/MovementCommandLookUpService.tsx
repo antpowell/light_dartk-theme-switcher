@@ -102,7 +102,7 @@ export function CommandLookUpService(
       componentGroup.push(
         <AttackInputs
           key={index}
-          inputs={input as unknown as Set<ActionCommand>}
+          inputs={input}
         />,
       );
       // return (
