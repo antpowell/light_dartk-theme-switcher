@@ -1,7 +1,7 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 import {
   ActionCommand,
-  DirectionalCommand,
+  DirectionalCommandKeys,
 } from "../models/MovementsModels.ts";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
 import { translatedCombo } from "../shared/state/signals.ts";

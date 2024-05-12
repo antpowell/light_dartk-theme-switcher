@@ -1,12 +1,12 @@
 import { ActionCommand } from "../models/MovementsModels.ts";
-import { Command } from "../models/MovementsModels.ts";
+import { CommandKeys } from "../models/MovementsModels.ts";
 import {
   basicAttackRegex,
   basicMovementRegex,
   compoundAttackRegex,
   compoundMovementRegex,
 } from "../shared/combo.ts";
-import { InputLanguageCommand } from "../shared/interfaces/models.ts";
+import { InputLanguageCommandKeys } from "../shared/interfaces/models.ts";
 
 import { translatedCombo } from "../shared/state/signals.ts";
 import { comboReducer } from "./comboReducer.ts";
@@ -48,7 +48,7 @@ export const comboRouter = (move: string) => {
   }
 
   const commandList = Object.values<
-    InputLanguageCommand
+    InputLanguageCommandKeys
   >(
     translatedCombo.value,
   )

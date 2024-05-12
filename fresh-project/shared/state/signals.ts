@@ -1,11 +1,11 @@
 import { Signal, signal } from "@preact/signals";
 import {
   CommandMapTypeSignal,
-  InputLanguageCommand,
+  InputLanguageCommandKeys,
 } from "../interfaces/models.ts";
 
 export const translatedCombo = signal<
-  Record<number, InputLanguageCommand>
+  Record<number, InputLanguageCommandKeys>
 >({});
 
 export const commandMapSignal: Signal<CommandMapTypeSignal> = signal({

@@ -1,12 +1,18 @@
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
 
-export type Command = DirectionalCommand | ActionCommandKeys;
+export type CommandKeys = DirectionalCommandKeys | ActionCommandKeys;
+export type Command = DirectionalCommand | ActionCommand;
 // export interface Command extends DirectionalCommand;
 
-export type DirectionalCommand =
+export type DirectionalCommandKeys =
   | BasicDirectionalCommandKeys
   | CompoundDirectionalCommandKeys
   | SpecialCommandKeys;
+
+export type DirectionalCommand =
+  | BasicDirectionalCommand
+  | CompoundDirectionalCommand
+  | SpecialCommand;
 
 export type SpecialCommandKeys = keyof typeof SpecialCommand;
 
@@ -51,7 +57,7 @@ export interface DirectionalCommandVariants {
 export type DirectionalInput =
   & Record<
     "command",
-    Partial<Command>
+    Partial<CommandKeys>
   >
   & DirectionalCommandVariants;
 
@@ -74,5 +80,5 @@ export interface ActionCommandInputs {
 }
 
 export type DirectionalCommandLookup = {
-  [key in DirectionalCommand]: JSX.Element;
+  [key in DirectionalCommandKeys]: JSX.Element;
 };

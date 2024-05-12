@@ -3,13 +3,13 @@ import { comboRouter } from "./comboRouter.ts";
 import { comboInputToComponentRouter } from "../shared/moveDisplayCreation.ts";
 import {
   CommandMapType,
-  InputLanguageCommand,
+  InputLanguageCommandKeys,
 } from "../shared/interfaces/models.ts";
 import { commandMapSignal } from "../shared/state/signals.ts";
 
 type MoveMapType = Map<
   number,
-  { move: string; breakdown: InputLanguageCommand[] }
+  { move: string; breakdown: InputLanguageCommandKeys[] }
 > // { move: string; breakdown: InputLanguageCommandType[] }
 ;
 

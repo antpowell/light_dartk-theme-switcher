@@ -1,9 +1,9 @@
-import { InputLanguageCommand } from "../shared/interfaces/models.ts";
+import { InputLanguageCommandKeys } from "../shared/interfaces/models.ts";
 import { commandMapSignal } from "../shared/state/signals.ts";
 import { translatedCombo } from "../shared/state/signals.ts";
 
 export const comboReducer = (
-  { index, input }: { index: number; input: InputLanguageCommand },
+  { index, input }: { index: number; input: InputLanguageCommandKeys },
 ) => {
   // commandMapSignal.value = {
   //   ...commandMapSignal.value,

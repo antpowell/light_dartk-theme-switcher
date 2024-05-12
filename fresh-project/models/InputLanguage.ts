@@ -2,21 +2,15 @@ import { InputLanguageCommandType } from "../shared/interfaces/models.ts";
 import {
   ActionCommand,
   BasicDirectionalCommand,
-  Command,
+  CommandKeys,
   CompoundDirectionalCommand,
   SpecialCommand,
 } from "./MovementsModels.ts";
 
-// export type InputLanguageType<T> = {
-//   [key in keyof T]: {
-//     id: string;
-//     component: InputLanguageCommandType;
-//   };
-// };
 export type InputLanguageType = {
-  [key in Command]: {
+  [key in CommandKeys]: {
     id: string;
-    component: Command;
+    component: InputLanguageCommandType;
   };
 };
 
