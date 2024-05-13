@@ -76,7 +76,7 @@ export enum ActionCommand {
 }
 
 export interface ActionCommandInputs {
-  inputs: Set<Input>;
+  inputs: Set<ActionCommand>;
 }
 
 export type DirectionalCommandLookup = {

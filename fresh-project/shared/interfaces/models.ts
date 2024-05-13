@@ -22,12 +22,12 @@ export type InputLanguageCommandKeys =
 
 export type InputLanguageCommandType = {
   hold: boolean;
-  command: InputLanguageCommand;
+  command: InputLanguageCommand | Set<ActionCommand>;
 };
 
 export type CommandMapTypeSignal = {
   inputs: Signal<
-    Array<InputLanguageCommandType | Set<InputLanguageCommandType>>
+    Array<InputLanguageCommandType>
   >;
 };
 
