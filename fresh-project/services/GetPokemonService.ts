@@ -20,14 +20,14 @@ effect(() => {
 
 async function fetchData({ init }: { init: boolean }) {
   console.log(`fetching Pokemon `);
-  const response = await fetch(`${url_with_name}`);
-  const results = await response.json();
+  // const response = await fetch(`${url_with_name}`);
+  // const results = await response.json();
 
-  console.log(`done fetching Pokemon`);
+  // console.log(`done fetching Pokemon`);
 
-  if (!init) {
-    pokemon.value = results;
-  }
+  // if (!init) {
+  //   pokemon.value = results;
+  // }
 
-  return results;
+  // return results;
 }

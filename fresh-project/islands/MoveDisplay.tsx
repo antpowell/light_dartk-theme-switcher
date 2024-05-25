@@ -1,8 +1,14 @@
 import { computed } from "@preact/signals";
 import { JSX } from "https://esm.sh/v128/preact@10.19.2/src/index.js";
-import { ActionCommand } from "../models/MovementsModels.ts";
+import {
+  ActionCommand,
+  BasicDirectionalCommand,
+  DirectionalCommand,
+} from "../models/MovementsModels.ts";
 import { commandMapSignal } from "../shared/state/signals.ts";
 import { MovementInputs } from "./CommandInputs/MovementInputs.tsx";
+import { D } from "./MovementInputs/D.tsx";
+import { InputLanguageCommand } from "../shared/interfaces/models.ts";
 
 export default function MoveDisplay({ children }: { children?: JSX.Element }) {
   // const combo1 = [{
@@ -18,6 +24,53 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
       ActionCommand.RK,
     ]),
     hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.LK,
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.LK,
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.LK,
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.LK,
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }];
+  const combo2 = [{
+    command: BasicDirectionalCommand.DOWN,
+    hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }, {
+    command: BasicDirectionalCommand.DOWN,
+    hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.RK,
+    ]),
+    hold: false,
+  }, {
+    command: new Set<ActionCommand>([
+      ActionCommand.LK,
+      ActionCommand.RK,
+    ]),
+    hold: false,
   }];
 
   const components = computed(() => {
@@ -28,15 +81,12 @@ export default function MoveDisplay({ children }: { children?: JSX.Element }) {
   console.log("📔 ~ components ~ components:", components.value);
 
   return (
-    <div class={"flex gap-4 flex-row align-center"}>
+    <div class={"flex gap-4 flex-row align-center w-full justify-center"}>
       {children ? children : (
         <>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center justify-center w-full">
             <h1 class={`text-lg font-bold`}>Move Display</h1>
-            <div>
-              <MovementInputs inputs={commandMapSignal.value.inputs.value} />
-              {/* <MovementInputs inputs={translatedCombo.value} /> */}
-            </div>
+            <MovementInputs inputs={combo2} />
           </div>
         </>
       )}

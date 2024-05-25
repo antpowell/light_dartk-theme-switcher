@@ -7,7 +7,7 @@ export function D({ hold }: DirectionalCommandVariants) {
       fill="none"
       viewBox="0 0 24 24"
       stroke-width="3"
-      class={`w-12 h-12 ${!hold ? "stroke-white" : "stroke-black"}`}
+      class={`${!hold ? "stroke-white" : "stroke-black"}`}
     >
       <path
         stroke-linecap="round"

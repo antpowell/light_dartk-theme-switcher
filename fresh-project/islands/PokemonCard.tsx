@@ -11,9 +11,9 @@ function getPokemonTypes(pokemon: Pokemon) {
   return types;
 }
 const pokemonTypes = computed<string[]>(() => (getPokemonTypes(pokemon.value)));
-const cardBgColor = signal<string>(
-  getPokemonTypeColors(pokemon.value.types),
-);
+// const cardBgColor = signal<string>(
+//   getPokemonTypeColors(pokemon.value.types),
+// );
 
 function displayPokemonTypes(pokemon: Pokemon) {
   return pokemonTypes.value
@@ -52,16 +52,16 @@ function getPokemonTypeColors(types: Type[]): string {
   return colors.get(types[0].type.name) ?? "bg-transparent";
 }
 
-effect(() => {
-  cardBgColor.value = getPokemonTypeColors(pokemon.value.types);
-});
+// effect(() => {
+//   cardBgColor.value = getPokemonTypeColors(pokemon.value.types);
+// });
 
 export default function PokemonCard() {
   return (
     <>
       <div class="group relative">
         <div
-          class={`relative h-80 w-full overflow-hidden rounded-lg ${cardBgColor} sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64`}
+          // class={`relative h-80 w-full overflow-hidden rounded-lg ${cardBgColor} sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64`}
         >
           <img
             src={pokemon.value.sprites.front_default}

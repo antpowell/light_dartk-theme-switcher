@@ -5,7 +5,7 @@ export function MovementInputs({ inputs }: CommandMapType) {
   console.log("rendering movement inputs... because of inputs", inputs);
   return (
     <>
-      <div className="flex flex-row gap-0 w-52 h-fit">
+      <div className={`grid grid-flow-col`}>
         {CommandLookUpService({ inputs })}
       </div>
     </>
